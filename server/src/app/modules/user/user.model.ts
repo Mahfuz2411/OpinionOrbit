@@ -7,6 +7,19 @@ const UserSchema: Schema = new Schema({
     type: String,
     required: [true, 'Name is required.'],
   },
+  password: {
+    type: String,
+    required: [true, 'Password is required.'],
+    validate: {
+      validator: function (v: string) {
+        return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
+          v,
+        );
+      },
+      message:
+        'Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.',
+    },
+  },
   gender: {
     type: String,
     enum: {
@@ -21,7 +34,7 @@ const UserSchema: Schema = new Schema({
     unique: true,
     validate: {
       validator: function (v: string) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
       },
       message: 'Invalid email format.',
     },
