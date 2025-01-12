@@ -10,4 +10,6 @@ export interface UserInterface {
   contactNumber?: string;
   bio?: string;
   status?: 'admin' | 'surveyor' | 'user' | 'pro-user' | 'blocked';
+  createdAt?: Date;
+  updatedAt?: Date;
 }
