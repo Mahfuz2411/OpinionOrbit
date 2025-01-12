@@ -8,4 +8,6 @@ export interface surveyInterface {
   subject: string;
   totalVotes: number;
   status: "active" | "inactive";
+  createdAt?: Date;
+  updatedAt?: Date;
 }
